@@ -17,6 +17,7 @@ from django.urls import include, path
 from django.contrib import admin
 
 urlpatterns = [
-    path('test/', include('alamenuud.urls')),
+    path('', include('alamenuud.urls')),
+    path('froala_editor/', include('froala_editor.urls')),
     path('admin/', admin.site.urls),
 ]
