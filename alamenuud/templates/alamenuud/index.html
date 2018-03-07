@@ -1,0 +1,10 @@
+{% extends "alamenuud/layout.html" %}
+
+{% block content %}
+    <ul>
+        {% for menuu in menuud %}
+        <li>{{menuu.nimetus}} - {{menuu.tiitel}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
