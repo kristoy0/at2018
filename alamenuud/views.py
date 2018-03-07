@@ -1,12 +1,20 @@
 from django.shortcuts import render
-from .models import Alamenuu, Sundmus
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import Alamenuu, Sundmus, Uudis
 
 # Create your views here.
 def index(request):
     menuud = Alamenuu.objects.all()
+    uudiste_nimekiri = Uudis.objects.all()
+
+    paginator = Paginator(uudiste_nimekiri, 2)
+
+    page = request.GET.get('page')
+    uudised = paginator.get_page(page)
 
     context = {
-        'menuud': menuud
+        'menuud': menuud,
+        'uudised': uudised
     }
 
     return render(request, 'alamenuud/index.html', context)

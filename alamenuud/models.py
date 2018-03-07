@@ -19,3 +19,15 @@ class Sundmus(models.Model):
         return self.nimetus
     class Meta:
         verbose_name_plural = "Sündmused"
+
+class Uudis(models.Model):
+    nimetus = models.CharField(max_length=200)
+    tutvustus = models.TextField(default='')
+    sisu = FroalaField()
+    kuupaev = models.DateTimeField(default=datetime.now, blank=True)
+    def __str__(self):
+        return self.nimetus
+    class Meta:
+        verbose_name_plural = "Uudised"
+
+
