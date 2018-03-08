@@ -5,7 +5,7 @@ from .models import Alamenuu, Sundmus, Uudis
 # Create your views here.
 def index(request):
     menuud = Alamenuu.objects.all()
-    uudiste_nimekiri = Uudis.objects.all()
+    uudiste_nimekiri = Uudis.objects.order_by('-kuupaev')
 
     paginator = Paginator(uudiste_nimekiri, 2)
 
@@ -21,7 +21,14 @@ def index(request):
 
 def muud(request, leht):
     menuud = Alamenuu.objects.all()
-    sisu = Alamenuu.objects.get(nimetus=leht)
+    if leht != "favicon.ico":
+        try:
+            sisu = Alamenuu.objects.get(nimetus=leht)
+        except Alamenuu.DoesNotExist:
+            sisu = None
+    else:
+        sisu = None
+
 
     context = {
         'menuud': menuud,
@@ -45,7 +52,7 @@ def postitus(request, number):
 def sundmused(request):
     menuud = Alamenuu.objects.all()
     kalender = Sundmus.objects.all()
-
+    
     context = {
         'menuud': menuud,
         'kalender': kalender
