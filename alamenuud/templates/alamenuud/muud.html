@@ -1,6 +1,20 @@
 {% extends "alamenuud/layout.html" %}
 
 {% block content %}
-    {{sisu.sisu|safe}}
+<div style="margin-bottom: 24px; width: 100%;" class="mdl-grid">
+
+<section style="background: white; width: 100%" class="mdl-cell mdl-shadow--2dp">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__supporting-text">
+            {% if post %}
+                <h3>{{sisu.nimetus}}</h3>
+                <p>{{sisu.sisu|safe}}</p>
+            {% else %}
+                {{sisu.sisu|safe}}
+            {% endif %}
+        </div>
+    </div>
+</section>
+</div>
 {% endblock %}
 

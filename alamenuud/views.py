@@ -30,6 +30,18 @@ def muud(request, leht):
 
     return render(request, 'alamenuud/muud.html', context)
 
+def postitus(request, number):
+    menuud = Alamenuu.objects.all()
+    sisu = Uudis.objects.get(id=number)
+
+    context = {
+        'menuud': menuud,
+        'sisu': sisu,
+        'post': True
+    }
+
+    return render(request, 'alamenuud/muud.html', context)
+
 def sundmused(request):
     menuud = Alamenuu.objects.all()
     kalender = Sundmus.objects.all()
