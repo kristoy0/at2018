@@ -1,21 +1,22 @@
 {% extends "alamenuud/layout.html" %}
 
 {% block content %}
-<div style="margin-bottom: 24px;" class="mdl-grid">
+<div class="mdl-grid mb-24">
     {% for uudis in uudised %}
-    <section style="background: white; width: 100%" class="mdl-cell mdl-shadow--2dp">
+    <section class="section-bg mdl-cell mdl-shadow--2dp">
         <div class="mdl-card mdl-cell mdl-cell--12-col">
             <div class="mdl-card__supporting-text">
                 <h4>{{uudis.nimetus}}</h4>
+                <h6>{{uudis.kuupaev|date:"j.m.Y"}}</h6>
                 {{uudis.tutvustus}}
             </div>
             <div class="mdl-card__actions">
-                <a href="/post/{{uudis.id}}" class="mdl-button">Loe veel</a>
+                <a href="/post/{{uudis.id}}" class="mdl-button text-primary">Loe veel</a>
             </div>
         </div>
     </section>
     {% endfor %}
-    <div class="mdl-grid" style="margin-top: 24px;">
+    <div class="mdl-grid mt-24">
         <a class="mdl-button--icon mdl-button mdl-js-button mdl-js-ripple-effect" href="?page=1">
             <i class="material-icons">arrow_back</i>
         </a>
@@ -26,7 +27,7 @@
         {% endif %}
         
         <span class="mdl-button mdl-js-button" disabled>
-            Page {{ uudised.number }} of {{ uudised.paginator.num_pages }}.
+            {{ uudised.number }}/{{ uudised.paginator.num_pages }}
         </span>
         
         {% if uudised.has_next %}

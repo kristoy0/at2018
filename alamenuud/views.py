@@ -7,14 +7,15 @@ def index(request):
     menuud = Alamenuu.objects.all()
     uudiste_nimekiri = Uudis.objects.order_by('-kuupaev')
 
-    paginator = Paginator(uudiste_nimekiri, 2)
+    paginator = Paginator(uudiste_nimekiri, 5)
 
     page = request.GET.get('page')
     uudised = paginator.get_page(page)
 
     context = {
         'menuud': menuud,
-        'uudised': uudised
+        'uudised': uudised,
+        'esileht': True
     }
 
     return render(request, 'alamenuud/index.html', context)
@@ -55,7 +56,8 @@ def sundmused(request):
     
     context = {
         'menuud': menuud,
-        'kalender': kalender
+        'kalender': kalender,
+        'sundmused': True
     }
 
     return render(request, 'alamenuud/sundmused.html', context)

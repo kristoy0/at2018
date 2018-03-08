@@ -1,13 +1,14 @@
 {% extends "alamenuud/layout.html" %}
 
 {% block content %}
-<div style="margin-bottom: 24px; width: 100%;" class="mdl-grid">
+<div class="section-width mb-24 mdl-grid">
 
-<section style="background: white; width: 100%" class="mdl-cell mdl-shadow--2dp">
+<section class="section-bg mdl-cell mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text">
             {% if post %}
                 <h3>{{sisu.nimetus}}</h3>
+                <h6>{{sisu.kuupaev|date:"j.m.Y"}}</h6>
                 <p>{{sisu.sisu|safe}}</p>
             {% else %}
                 {{sisu.sisu|safe}}

@@ -1,0 +1,29 @@
+{% load static %}
+
+<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+    <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+    </div>
+    <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        <img src="{% static "alamenuud/logo.png" %}" alt="Tartu Kutsehariduskeskus">
+    </div>
+    <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+    </div>
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+        {% for menuu in menuud %}
+        {% if menuu.nimetus.lower == "uudised" and esileht %}
+        <a href="/" class="mdl-layout__tab is-active">Uudised</a>
+        {% elif menuu.nimetus.lower == "uudised" %}
+        <a href="/" class="mdl-layout__tab">Uudised</a>
+        {% elif menuu.nimetus.lower == sisu.nimetus.lower %}
+        <a href="/{{ menuu.nimetus.lower }}" class="mdl-layout__tab is-active">{{menuu.nimetus}}</a>    
+        {% else %}
+        <a href="/{{ menuu.nimetus.lower }}" class="mdl-layout__tab">{{menuu.nimetus}}</a>
+        {% endif %}
+        {% endfor %}
+        {% if sundmused %}
+        <a href="/sundmused" class="mdl-layout__tab is-active">Sündmused</a>
+        {% else %}
+        <a href="/sundmused" class="mdl-layout__tab">Sündmused</a>
+        {% endif %}
+    </div>
+</header>
