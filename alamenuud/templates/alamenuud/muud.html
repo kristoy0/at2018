@@ -9,8 +9,10 @@
             {% if post %}
                 <h3>{{sisu.nimetus}}</h3>
                 <h6>{{sisu.kuupaev|date:"j.m.Y"}}</h6>
-                <p>{{sisu.sisu|safe}}</p>
+                {{sisu.sisu|safe}}
+                <a href="/" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Tagasi avalehele</a>
             {% else %}
+            <h3>{{sisu.nimetus}}</h3>
                 {{sisu.sisu|safe}}
             {% endif %}
         </div>
